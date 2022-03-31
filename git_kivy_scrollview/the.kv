@@ -1,0 +1,41 @@
+<fscreen>
+
+	canvas.before:
+		Color:
+			rgba: 1, 1, 1, 1
+
+		Rectangle:
+			size: root.width, root.height
+			pos: 0, 0
+
+
+
+	ScrollView:
+		size: root.width*0.4, root.height*0.4
+		pos: root.height*0.3, root.height*0.3
+		Label:
+			id: output
+			color: 0, 0, 0, 1
+			text: ''
+			size_hint_x: 1.0
+			size_hint_y: None
+			text_size: self.width, None
+			height: self.texture_size[1]
+
+
+
+
+
+
+	TextInput:
+		id: input
+		size: root.width*0.6, root.height*0.05
+		pos: root.width*0.2, root.height*0.2
+		hint_text: 'Push me To scroll'
+
+
+	Button:
+		text: ' push me'
+		size: root.width*0.4, root.height*0.05
+		pos: root.width*0.3, root.height*0.1
+		on_press: root.push_me()
