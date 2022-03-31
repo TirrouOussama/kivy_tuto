@@ -1,0 +1,22 @@
+<fscreen>
+	Label:
+		id: lb
+		color: 1, 1, 1, 1
+		
+		font_size: root.height*0.023
+		size: root.width*0.2, root.height*0.1
+		pos: root.width*0.4, root.height*0.45
+
+	
+	Button:
+		text: 'stop'
+		size: root.width*0.2, root.height*0.05
+		pos: root.width*0.4, root.height*0.3
+		on_press: root.stop()
+
+
+	Button:
+		text: 'start'
+		size: root.width*0.2, root.height*0.05
+		pos: root.width*0.4, root.height*0.6
+		on_press: root.start()
