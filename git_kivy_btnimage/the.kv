@@ -1,0 +1,13 @@
+<fscreen>
+
+	Button:
+		background_color: 0, 0, 0, 0
+		text: 'btn'
+		size: root.width*0.1, root.height*0.1
+		pos:root.width*0.45, root.height*0.45
+		on_press: root.press()
+		Image:
+			source: 'img.png'   #64*64 pxls
+			pos: self.parent.pos
+			size: self.parent.size
+			allow_stretch: True
