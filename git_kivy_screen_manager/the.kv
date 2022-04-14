@@ -1,0 +1,26 @@
+<fscreen>
+	Label:
+		text: 'this is the first screen'
+		font_size: root.height*0.05
+		size: root.width*0.4, root.height*0.5
+		pos: root.width*0.3, root.height*0.5
+
+	Button:
+		text: 'switch screen'
+		size: root.width*0.2, root.height*0.05
+		pos: root.width*0.4, root.height*0.2
+		on_press: root.change()
+
+
+<secscreen>
+	Label:
+		text: 'this is the second screen'
+		font_size: root.height*0.05
+		size: root.width*0.4, root.height*0.5
+		pos: root.width*0.3, root.height*0.5
+
+	Button:
+		text: 'switch screen'
+		size: root.width*0.2, root.height*0.05
+		pos: root.width*0.4, root.height*0.2
+		on_press: root.change()
