@@ -1,0 +1,33 @@
+<fscreen>
+	MapView:
+		id: main_map
+		size: root.width, root.height
+
+		MapMarkerPopup:
+			id: main_map_me
+			lat: 36.5924
+			lon: 2.9898
+			source: 'me_32.png'
+			Button:
+				size: root.width*0.8, root.height*0.8
+				background_color: 0, 0, 0, 0
+				background_normal: ''
+				on_press: root.press()
+				canvas.before:
+					Ellipse:
+						source: root.my_avat
+						angle_start: 0
+						angle_end: 360
+
+
+		Button:
+			text: 'place pin'
+			size: root.width*0.3, root.height*0.05
+			pos: 0, 0
+			on_press: root.place_pin()
+
+		Button:
+			text: 'remove pin'
+			size: root.width*0.3, root.height*0.05
+			pos: root.width*0.7, 0
+			on_press: root.remove_pin()
