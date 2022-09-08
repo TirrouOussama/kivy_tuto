@@ -1,0 +1,30 @@
+<welcomescreen>
+	canvas.before:
+		Color:
+			rgba: 1, 1, 1, 1
+
+		Rectangle:
+			size: root.size
+
+
+	Label:
+		text: 'notification test'
+		size: root.width*0.3, root.height*0.1
+		pos: root.width*0.35, root.height*0.45
+		font_size: root.width*0.05
+		color: 0, 0, 0, 1
+
+
+	Button:
+		text: 'notify'
+		size: root.width*0.2, root.height*0.05
+		pos: root.width*0.4, root.height*0.1
+		on_press: root.notifyme()
+
+	TextInput:
+		id: inp
+		size: root.width*0.4, root.height*0.05
+		pos: root.width*0.3, root.height*0.2
+		hint_text: 'Enter notif text'
+		color: 0,0,0,1
+		halign: 'center'
