@@ -1,0 +1,108 @@
+<welcomescreen>
+
+	canvas.before:
+		Color:
+			rgba: 1, 1, 1, 1
+
+		Rectangle:
+			size: root.size
+
+
+	Label:
+		color: 0, 0, 0, 1
+		text: 'Welcome to chatapp'
+		size: root.width*0.2, root.height*0.05
+		pos: root.width*0.4, root.height*0.9
+		font_size: root.height*0.04
+		font_name: '1.ttf'
+
+
+	TextInput:
+		id: user_id
+		size: root.width*0.2, root.height*0.05
+		pos: root.width*0.4, root.height*0.6
+		hint_text: ' Enter username'
+		halign: 'center'
+		font_name: '1.ttf'
+
+	TextInput:
+		id: ip_id
+		size: root.width*0.2, root.height*0.05
+		pos: root.width*0.4, root.height*0.5
+		hint_text: 'Enter IP'
+		halign: 'center'
+		font_name: '1.ttf'
+
+	TextInput:
+		id: port_id
+		size: root.width*0.2, root.height*0.05
+		pos: root.width*0.4, root.height*0.4
+		hint_text: ' Enter Port'
+		halign: 'center'
+		font_name: '1.ttf'
+
+
+	Button:
+		text: 'connect'
+		size: root.width*0.2, root.height*0.05
+		pos: root.width*0.4, root.height*0.3
+		on_press: root.initiate()
+
+
+<mainscreen>
+
+	canvas.before:
+		Color:
+			rgba: 1, 1, 1, 1
+
+		Rectangle:
+			size: root.size
+
+		Color:
+			rgba: 0.8, 0.8, 0.8, 1
+
+		Rectangle:
+			size: root.width*0.6, root.height*0.7
+			pos: root.width*0.2, root.height*0.2
+
+	Label:
+		id: head_id
+		color: 0, 0, 0, 
+		size: root.width*0.2, root.height*0.05
+		pos: root.width*0.4, root.height*0.9
+		font_size: root.height*0.025
+		font_name: '1.ttf'
+
+
+	ScrollView:
+		size: root.width*0.6, root.height*0.7
+		pos: root.width*0.2, root.height*0.2
+
+
+		Label:
+			id: chat_text_id
+			color: 0, 0, 0, 1
+			size_hint_x: 1.0
+			size_hint_y: None
+			text_size: self.width, None
+			height: self.texture_size[1]
+			font_name: '1.ttf'
+			markup: True
+
+	TextInput:
+		id: msg_id
+		size: root.width*0.55, root.height*0.05
+		pos: root.width*0.2, root.height*0.15
+		font_name: '1.ttf'
+
+	Button:
+		background_color: 0, 0, 0, 0
+		size: root.width*0.05, root.height*0.05
+		pos: root.width*0.75, root.height*0.15
+		on_press: root.send_msg()
+		Image:
+			source: 'send.png'
+			pos: self.parent.pos
+			size: self.parent.size
+			allow_stretch: True
+				
