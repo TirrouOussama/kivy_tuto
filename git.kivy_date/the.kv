@@ -1,0 +1,146 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import Gradient kivy_gradient.Gradient
+
+
+<datescreen>
+
+	canvas.before:
+		Color:
+			rgba: 1, 1, 1, 1
+
+		Rectangle:
+			size: root.size
+			pos: root.pos
+
+
+	GridLayout:
+		id: grid_date
+		size: root.width*0.8, root.height*0.35
+		pos: root.width*0.1, root.height*0.4
+		cols: 1
+		spacing: 50
+		canvas.before:
+			Color:
+				rgba: 0, 0, 0, 0.1
+			RoundedRectangle:
+				size: grid_date.size[0] + 80, grid_date.size[1] + 80
+				pos: grid_date.pos[0] - 40, grid_date.pos[1] - 40
+				radius: [25, 25, 25, 25]
+
+
+			Color:
+				rgba: 0, 0, 0, 1
+			Line:
+				points: (grid_date.pos[0], grid_date.pos[1] + root.height*0.05,grid_date.pos[0] + root.width*0.8, grid_date.pos[1] + root.height*0.05)
+				width: 2
+
+		GridLayout:
+			id: grid_years
+			size_hint_y: 1/6
+			cols: 3
+			
+			Button:
+				size_hint_x: 0.1
+				id: left_date
+				background_color: 0, 0, 0, 0				
+				on_press: root.move('year_left')
+
+				Image:
+					source: 'resources/images/lt.png'
+					allow_stretch: True
+					keep_ratio: True
+					pos: left_date.pos
+
+			TextInput:
+				id: input_year
+				text: '2024'
+				size_hint_x: 0.8
+				halign: "center"
+				valign: "middle"
+				hint_text: '2024'
+				padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+				multiline: False
+				font_name: 'resources/fonts/1.ttf'	
+				background_color: 0, 0, 0, 0
+				color: 1, 1, 1, 1
+
+			Button:
+				size_hint_x: 0.1
+				id: right_date
+				background_color: 0, 0, 0, 0	
+				on_press: root.move('year_right')			
+				Image:
+					source: 'resources/images/rt.png'
+					allow_stretch: True
+					keep_ratio: True
+					pos: right_date.pos
+
+		GridLayout:
+			id: grid_month
+			size_hint_y: 1/6
+			cols: 3
+			
+			Button:
+				size_hint_x: 0.1
+				id: left_month
+				background_color: 0, 0, 0, 0	
+				on_press: root.move('month_left')			
+				Image:
+					source: 'resources/images/lt.png'
+					allow_stretch: True
+					keep_ratio: True
+					pos: left_month.pos
+
+
+
+			Label:
+				size_hint_x: 0.8
+				id: month_lbl
+				color: 0, 0, 0, 1
+				text: 'January'
+
+				multiline: False
+				font_name: 'resources/fonts/1.ttf'	
+
+			Button:
+				size_hint_x: 0.1
+				id: right_month
+				background_color: 0, 0, 0, 0
+				on_press: root.move('month_right')	
+				Image:
+					source: 'resources/images/rt.png'
+					allow_stretch: True
+					keep_ratio: True
+					pos: right_month.pos
+
+		GridLayout:
+			id: grid_days
+			cols: 7 
+			spacing: 10
+
+
+		GridLayout:
+			size_hint_y: 1/6
+			cols: 2
+			spacing: 10
+			Label:
+				id: date_accept_lbl
+				size_hint_x: 0.9
+				color: 0, 0, 0, 1
+				text: '1 January 2024'
+
+				font_name: 'resources/fonts/1.ttf'	
+  
+			Button:
+				size_hint_x: 0.1
+				id: valid_date
+				background_color: 0, 0, 0, 0
+				on_press: root.confirm_date()
+
+				Image:
+					source: 'resources/images/accept.png'
+					allow_stretch: True
+					keep_ratio: True
+					pos: valid_date.pos  
+					halign: "center"
+					valign: "middle"
