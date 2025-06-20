@@ -1,0 +1,208 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import Gradient kivy_gradient.Gradient
+
+
+<initialscreen>
+	canvas.before:
+		Color:
+			rgba: 1, 1, 1, 1
+		Rectangle:
+			size: root.size
+			pos: root.pos
+
+
+	Image:
+		id: l01
+		source: 'resources/images/loading.png'
+		size: 64, 64
+		pos: root.width*1.5, root.height*0.8
+		fit_mode: 'fill'
+		allow_stretch: True
+		canvas.before:
+			PushMatrix
+			Rotate:
+				angle: root.l01_angle
+				origin: self.center
+		canvas.after:
+			PopMatrix
+
+	Button:
+		id: lock
+		size: root.size
+		pos: root.width*1.1, 0
+		background_color: 0, 0, 0, 0
+
+
+<access_screen>
+	canvas.before:
+		Color:
+			rgba: 1, 1, 1, 1
+		Rectangle:
+			size: root.size
+			pos: root.pos
+
+
+	SupperLabel:
+		text: 'This system is for authorized use only. Unauthorized access is prohibited and may be subject to criminal or civil penalties. Use of this system may be monitored and recorded. By continuing, you consent to such monitoring and agree to abide by all applicable policies.'
+		color: 1, 0, 0, 1
+		size: root.width*0.8, root.height*0.15
+		pos: root.width*0.1, root.height*0.75
+		font_size: root.height*0.017
+		font_name: 'resources/fonts/Lexend-Bold.ttf'
+		border_color: [0, 0, 0, 0]
+		type_speed: 0.01
+
+
+	GridLayout:
+		cols: 1
+		size: root.width*0.9, root.height*0.35
+		pos: root.width*0.05, root.height*0.4
+		spacing: root.height*0.025
+
+		SupperTextinput:
+			padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]
+			id: log_mail
+			icon_source: 'resources/images/mail.png'
+			hint_text: 'Enter Your Email'
+			multiline: False					#### this is gradient color left
+			gr_left: '#ffffff'	#### this is gradient color left
+			gr_middle: '#cbcbcb'
+			gr_right: '#ffffff'
+			font_name: 'resources/fonts/Lexend-ExtraLight.ttf'		  			#### this is gradient color right
+			font_size: root.height*0.02
+			icon_offset: -25		  			#### how left is the icon 
+			underline_width: 1					####  the width of the underline
+			line_h: 10							####  the height of the underline
+			border_width: 1
+			border_color: [0, 0, 0, 1]
+			sz_x: log_mail.size[1] - 10
+			sz_y: log_mail.size[1] - 10
+
+		SupperTextinput:
+			padding_y: [self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0]	
+			id: log_pass
+			icon_source: 'resources/images/pass.png'
+			hint_text: 'Enter Your Password'
+			multiline: False					#### this is gradient color left
+			gr_left: '#ffffff'	#### this is gradient color left
+			gr_middle: '#cbcbcb'
+			gr_right: '#ffffff'
+			font_name: 'resources/fonts/Lexend-ExtraLight.ttf'		  			#### this is gradient color right
+			font_size: root.height*0.02
+			icon_offset: -25		  			#### how left is the icon 
+			underline_width: 1					####  the width of the underline
+			line_h: 10							####  the height of the underline
+			border_width: 1
+			border_color: [0, 0, 0, 1]
+
+			sz_x: log_pass.size[1] - 10
+			sz_y: log_pass.size[1] - 10
+
+		GridLayout:
+			cols: 3
+			halign: "center"
+			valign: "middle"
+			
+			CheckBox:
+				id: remember_me
+				background_checkbox_normal:'resources/images/dis.png'
+				background_checkbox_down:  'resources/images/en.png'
+				size_hint_x: 0.1
+	
+
+			Label:
+				font_name: 'resources/fonts/Lexend-Bold.ttf'
+				text: 'Remember Me'
+				color: 0, 0, 0, 1
+				halign: "left"
+				valign: "middle"
+				text_size: self.size
+				font_size: root.height*0.013
+				size_hint_x: 0.4
+
+			Label:
+				font_name: 'resources/fonts/Lexend-Bold.ttf'
+				text: '[ref=Availability]Forgot Password[/ref]'
+
+				color: 1, 0, 0, 0.7
+				halign: "right"
+				valign: "middle"
+				markup: True
+				text_size: self.size
+				font_size: root.height*0.013
+				on_ref_press: root.forgot_pass()
+				size_hint_x: 0.5
+
+		SupperButton:
+			text: 'Login'
+			gr_left: '#ffffff'	#### this is gradient color left
+			gr_middle: '#cbcbcb'
+			gr_right: '#ffffff'
+			font_name: 'resources/fonts/Lexend-Bold.ttf'
+			font_size: root.height*0.02	
+			border_width: 1
+			border_color: [0, 0, 0, 1]
+			on_press: root.login("input")
+
+		SupperLabel:
+			id: login_error_lbl
+			color: 1, 0, 0, 1
+			font_size: root.height*0.017
+			font_name: 'resources/fonts/Lexend-Bold.ttf'
+			border_color: [0, 0, 0, 0]
+			type_speed: 0.01
+
+	Image:
+		id: l01
+		source: 'resources/images/loading.png'
+		size: 64, 64
+		pos: root.width*1.5, root.height*0.8
+		fit_mode: 'fill'
+		allow_stretch: True
+		canvas.before:
+			PushMatrix
+			Rotate:
+				angle: root.l01_angle
+				origin: self.center
+		canvas.after:
+			PopMatrix
+
+	Button:
+		id: lock
+		size: root.size
+		pos: root.width*1.1, 0
+		background_color: 0, 0, 0, 0
+
+<main_screen>
+	canvas.before:
+		Color:
+			rgba: 1, 1, 1, 1
+		Rectangle:
+			size: root.size
+			pos: 0, 0
+
+
+	SupperLabel:
+		text: 'Welcome buddy i just got logged in'
+		color: 0, 0, 0.8, 1
+		size: root.width*0.8, root.height*0.15
+		pos: root.width*0.1, root.height*0.75
+		font_size: root.height*0.017
+		font_name: 'resources/fonts/Lexend-Bold.ttf'
+		border_color: [0, 0, 0, 0]
+		type_speed: 0.01
+
+
+
+	SupperButton:
+		text: 'Logout'
+		gr_left: '#ffffff'	#### this is gradient color left
+		gr_middle: '#cbcbcb'
+		gr_right: '#ffffff'
+		size: root.width*0.2, root.height*0.05
+		pos: root.width*0.4, root.height*0.5
+		font_name: 'resources/fonts/Lexend-Bold.ttf'
+		font_size: root.height*0.02	
+		border_width: 1
+		border_color: [0, 0, 0, 1]
+		on_press: root.logout()
