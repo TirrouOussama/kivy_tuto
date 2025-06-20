@@ -1,0 +1,39 @@
+<SupperButton>:
+
+	italic: True
+	text_size: self.size
+	halign: "center"
+	valign: "middle"
+	on_press: root.pressed()
+	color: 0, 0, 0, 1
+	background_color: 0, 0, 0, 0
+	
+	canvas.before:
+		Color: 
+			rgba: 1, 1, 1, 1
+
+		RoundedRectangle:
+			size: root.size
+			pos: root.pos
+			radius:[root.size[1]/2, root.size[1]/2,root.size[1]/2,root.size[1]/2]
+			texture: Gradient.horizontal(get_color_from_hex(root.gr_left),get_color_from_hex(root.gr_middle), get_color_from_hex(root.gr_right))
+
+
+		Color:
+			rgba: root.border_color
+
+		Line:
+			width: root.border_width
+			points: (root.pos[0]+ root.size[1]/2, root.pos[1], root.pos[0] + root.size[0] - root.size[1]/2, root.pos[1])
+
+		Line:
+			width: root.border_width
+			circle: (root.pos[0]+ root.size[1]/2, root.pos[1]+ root.size[1]/2, root.size[1]/2, 0, -180 )
+
+		Line:
+			width: root.border_width
+			points: (root.pos[0]+ root.size[1]/2, root.pos[1] + root.size[1], root.pos[0] + root.size[0] - root.size[1]/2, root.pos[1] + root.size[1])
+
+		Line:
+			width: root.border_width
+			circle: (root.pos[0] + root.size[0] - root.size[1]/2, root.pos[1]+ root.size[1]/2, root.size[1]/2, 0, 180 )
